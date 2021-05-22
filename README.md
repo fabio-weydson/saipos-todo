@@ -12,7 +12,9 @@ Teste realizado para vaga na https://saipos.com.
 # 🛠 Stack Utilizada
 
 
- NodeJS v12.14
+NodeJS v12.14 (w. Express.js v4.17)
+
+MySQL 
 
 AngularJS v1.8.2
 
