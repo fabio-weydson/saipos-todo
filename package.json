@@ -2,10 +2,10 @@
   "name": "saipos-todo",
   "version": "1.0.0",
   "description": "saipos todo list",
-  "main": "server-app.js",
+  "main": "server.js",
   "scripts": {
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
-    "start": "node server-app.js",
+    "start": "node server.js",
     "deploy": "git push heroku master && heroku logs --tail"
   },
   "repository": {
