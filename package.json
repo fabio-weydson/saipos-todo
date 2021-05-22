@@ -1,6 +1,6 @@
 {
   "name": "saipos-todo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "saipos todo list",
   "main": "server.js",
   "scripts": {
