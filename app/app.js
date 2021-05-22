@@ -1,4 +1,4 @@
-var api = 'http://localhost:80';
+var api = 'https://saipos-todo.herokuapp.com/';
 var app = angular.module('myTodoList',[])
 var senha = "TrabalheNaSaipos";
 
