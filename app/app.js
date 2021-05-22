@@ -74,7 +74,7 @@ app.controller('myTodoController', function($scope,$http) {
 
     /** Valida E-mail */
     $scope.verifyEmail = (newTask)=>{
-        $http.get(`https://apilayer.net/api/check?access_key=${process.env.API_LAYER_KEY}&email=${newTask.email}&smtp=1&format=1`).then((res)=>{
+        $http.get(`https://apilayer.net/api/check?access_key=579eb9175c3199d072bfbd7ce28a0903&email=${newTask.email}&smtp=1&format=1`).then((res)=>{
             if(res.data.did_you_mean) {
 
                 let did_you_mean = window.confirm(`Você quis dizer ${res.data.did_you_mean}?`)
