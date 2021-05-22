@@ -77,7 +77,8 @@ app.post('/update-task', async (req,res)=> {
 })
 
 app.maxConnections = 9;
+const PORT = process.env.PORT || 80;
 
-app.listen(80,()=>{
+app.listen(PORT,()=>{
   console.log("Rodando na porta 8080")
 });
