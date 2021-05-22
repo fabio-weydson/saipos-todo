@@ -19,7 +19,7 @@ app.use((error, req, res, next) => {
 
 //Metodo para conexão ao banco
 function connect() {
-  return mysql.createConnection('mysql://jmkb1oyk4uo4sxa4:sqjx4hy3ilc29gca@frwahxxknm9kwy6c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/kwra425tj8sw9n3w');
+  return mysql.createConnection(process.env.JAWSDB_URL);
 }
 const conn = connect();
 
