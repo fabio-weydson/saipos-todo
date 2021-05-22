@@ -76,7 +76,7 @@
                             <li class="row mt-4" ng-repeat="task in tasks" ng-if="task.status==1">
                                 <div class="col-9 ">
                                     <h5 class="text-primary">{{task.title}} </h5>
-                                    <div><a href="mailto:{{task.email}}" title="{{task.email}}"><i class="fa fa-envelope" aria-hidden="true"></i></a><b>{{task.resp_name}}</b> <br/><span class="small text-secondary">Atualização: {{ task.updated_at |  date:"dd/MM/yyyy 'às' hh:mm"}}</span></div>
+                                    <div><a href="mailto:{{task.email}}" title="{{task.email}}"><i class="fa fa-envelope" aria-hidden="true"></i></a> <b>{{task.resp_name}}</b> <br/><span class="small text-secondary">Atualização: {{ task.updated_at |  date:"dd/MM/yyyy 'às' hh:mm"}}</span></div>
                                 </div>
                                 <div class="col-3  text-center">
                                     <a ng-click="delTask($index)" ><i class="fa fa-times bg-danger text-white p-2" aria-hidden="true"></i></a>

@@ -1,10 +1,12 @@
 {
   "name": "saipos-todo",
   "version": "1.0.0",
-  "description": "\"# saipos-todo\"",
-  "main": "index.js",
+  "description": "saipos todo list",
+  "main": "server-app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "start": "node server-app.js",
+    "deploy": "git push heroku master && heroku logs --tail"
   },
   "repository": {
     "type": "git",

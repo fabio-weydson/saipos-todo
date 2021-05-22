@@ -8,7 +8,7 @@ var fs = require('fs'),
 var app = express();
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, '../app/')));
+app.use(express.static(path.join(__dirname, 'app')));
 
 
 //Middleware de erros
@@ -40,7 +40,7 @@ async function updateTask(task){
 
 /** Endpoint padrão **/
 app.get('/', (req, res)=> {
-  fs.readFile(path.join(__dirname,'../app','index.html'), function (err,data) {
+  fs.readFile(path.join(__dirname,'app','index.html'), function (err,data) {
     if (err) {
       res.writeHead(404);
       res.end(JSON.stringify(err));

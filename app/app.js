@@ -5,7 +5,6 @@ var senha = "TrabalheNaSaipos";
 app.controller('myTodoController', function($scope,$http) {
 
     $scope.loading = false;
-    $scope.form = {};
     $scope.tasks  = [];
 
 
@@ -20,11 +19,11 @@ app.controller('myTodoController', function($scope,$http) {
     $scope.addTask = (newTask)=>{
        
         $scope.loading = true;
-        $scope.form = angular.copy(newTask);
 
-        $http.post(api+'/add-task', $scope.form).then((res)=>{
+        $http.post(api+'/add-task', newTask).then((res)=>{
             if(res.status){
                 setTimeout(()=>{ $scope.getTasks(); },1000);
+                $scope.newTask = {};
             }
         }, ()=>{
             alert("Não foi possível adicionar a tarefa.");
@@ -99,18 +98,18 @@ app.controller('myTodoController', function($scope,$http) {
     }
 
     $scope.randomTask = async ()=>{
-        return await $http.get('https://cat-fact.herokuapp.com/facts/random/?animal_type=dog').then((res)=>{
-           let fact =  res.data.text;
-           let newTask = {
-               "resp_name":"Eu",
-               "email":"eu@me.com",
-               "title" : fact,
-               "status" : 0,
-               "changes" : 0,
-               "dummy" : 1,
-               "created_at": new Date()
-           }
-           $scope.tasks.push(newTask)
+        return await $http.get('https://cat-fact.herokuapp.com/facts/random/?animal_type=dog&amount=3').then((res)=>{
+           let facts =  res.data;
+           facts.map((fact,index)=>{
+            $scope.tasks.push({
+                "resp_name":"Eu",
+                "email":"eu@me.com",
+                "title" : fact.text,
+                "status" : 0,
+                "changes" : 0,
+                "dummy" : 1,
+                "created_at" : new Date()})
+           })
         })
     }
 
