@@ -28,9 +28,11 @@ connection.connect((err) => {
   if (err) throw err;
   console.log('conexao ok!');
 });
+
 app.get('/', function (req, res) {
   res.send('Bem vindo!');
 });
+
 app.get('/getAll', function (req, res) {
   connection.query('SELECT * FROM tasks', (err,rows) => {
     if(err) throw err;

@@ -53,8 +53,8 @@
                        <ul class="mt-4 p-0" ng-if="tasks">
                            <li class="row mt-4" ng-repeat="task in tasks" ng-if="task.status==0">
                                 <div class="col-9 ">
-                                    <h5>{{task.title}}</h5>
-                                    <span>{{task.responsable}} <i>{{task.email}}</i></span>
+                                    <h6>{{task.title}}</h6>
+                                    <span><b>{{task.resp_name}}</b> <i>{{task.email}}</i></span>
                                 </div>
                                 <div class="col-3  text-center">
                                     <a ng-click="delTask($index)" ><i class="fa fa-times bg-danger text-white p-2" aria-hidden="true"></i></a>
@@ -74,8 +74,8 @@
                         <ul class="mt-4 p-0" ng-if="tasks" >
                             <li class="row mt-4" ng-repeat="task in tasks" ng-if="task.status==1">
                                 <div class="col-9 ">
-                                    <h5>{{task.title}}</h5>
-                                    <span>{{task.responsable}} <i>{{task.email}}</i></span>
+                                    <h6>{{task.title}}</h6>
+                                    <span><b>{{task.resp_name}}</b> <i>{{task.email}}</i></span>
                                 </div>
                                 <div class="col-3  text-center">
                                     <a ng-click="delTask($index)" ><i class="fa fa-times bg-danger text-white p-2" aria-hidden="true"></i></a>
@@ -169,6 +169,21 @@
                     return false;
                 })
             }
+
+            $scope.randomTask = ()=>{
+                $http.get('https://cat-fact.herokuapp.com/facts/random/?animal_type=dog').then((res)=>{
+                   let fact =  res.data.text;
+                   let newTask = {
+                       "resp_name":"Eu",
+                       "email":"eu@me.com",
+                       "title" : fact,
+                       "status" : 0,
+                   }
+                   $scope.addTask(newTask)
+                })
+            }
+
+            $scope.randomTask()
 
         })
 
