@@ -10,8 +10,8 @@ app.controller('myTodoController', function($scope,$http) {
 
     /** Verifica Senha */
     $scope.Auth = ()=> {
-        let auth = window.prompt("Informe a senha do gestor");
-        if(!auth) { return false; } else if(auth!=senha) { alert("Senha incorreta :("); return false; }
+        let auth = window.prompt("Por favor informe a senha do gestor:");
+        if(!auth) { return false; } else if(auth!=senha) { alert("Senha incorreta 😕"); return false; }
         return true
     }
 
@@ -26,7 +26,7 @@ app.controller('myTodoController', function($scope,$http) {
                 $scope.newTask = {};
             }
         }, ()=>{
-            alert("Não foi possível adicionar a tarefa.");
+            alert("Não foi possível adicionar a tarefa 😕");
             $scope.loading = false;
         });  
     }
@@ -57,7 +57,7 @@ app.controller('myTodoController', function($scope,$http) {
                 })
             }
         } else {
-            alert("Essa tarefa já alcançou o limite de mudanças :(")
+            alert("Essa tarefa já alcançou o limite de mudanças 😕")
         }
     }
 
@@ -86,7 +86,7 @@ app.controller('myTodoController', function($scope,$http) {
 
             } else if(!res.data.format_valid) {
 
-                alert("Email invalido!");
+                alert("Email invalido 😕");
                 $scope.newTask.email = '';
                 $scope.loading = false;
 

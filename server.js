@@ -11,13 +11,13 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'app')));
 
 
-//Middleware de erros
+/** Middleware de erros */
 app.use((error, req, res, next) => {
   console.error(error.stack);
   res.status(500).json({"error":JSON.stringify(error)});
  })
 
-//Metodo para conexão ao banco
+/** Metodo para conexão ao banco */
 function connect() {
   return mysql.createConnection(process.env.JAWSDB_URL);
 }
@@ -40,7 +40,7 @@ async function updateTask(task){
 
 /** Endpoint padrão **/
 app.get('/', (req, res)=> {
-  fs.readFile(path.join(__dirname,'app','index.html'), function (err,data) {
+  fs.readFile(path.join(__dirname,'app','index.html'), function (err, data) {
     if (err) {
       res.writeHead(404);
       res.end(JSON.stringify(err));
@@ -53,27 +53,27 @@ app.get('/', (req, res)=> {
 
 /** Endpoint para retornar todos os registros */
 app.get('/tasks', async (req, res)=> {
-  return await conn.query('SELECT * FROM tasks', (err,results)=>{
+  return await conn.query('SELECT * FROM tasks', (err, results) => {
     res.json(results)
   });
 });
 
 /** Endpoint para adicionar novo registro */
-app.post('/add-task', async (req,res)=> {
+app.post('/add-task', async (req, res)=> {
   let task = req.body;
   const inserted = await insertTask(task);
-  if(inserted) res.send({"status":true})
+  if (inserted) res.send( { "status":true } )
 })
 
 /**
 Endpoint para remover um registro
-apenas mudança de status para preservar os dados
+(Apenas mudança de status para preservar os dados)
 */
 
-app.post('/update-task', async (req,res)=> {
+app.post('/update-task', async (req, res) => {
   let task = req.body;
   const updated = await updateTask(task);
-  if(updated) res.send({"status":true})
+  if (updated) res.send( { "status":true } )
 })
 
 app.maxConnections = 9;
